@@ -136,8 +136,8 @@
       grid-template-columns: repeat(3, minmax(105px, 1fr));
     }
 
-    /* Earrings & Jhumkas mega menu: preserves the existing section content */
-    .earrings-mega-menu {
+    /* Shared jewellery mega menu: same design/content as Earrings & Jhumkas for now */
+    .jewellery-mega-menu {
       width: min(820px, calc(100vw - 40px));
       min-width: 720px;
       grid-template-columns: 1fr;
@@ -145,48 +145,48 @@
       overflow: hidden;
     }
 
-    .earrings-mega-menu .category-section {
+    .jewellery-mega-menu .category-section {
       width: 100%;
       background: #fff;
     }
 
-    .earrings-mega-menu .category-container {
+    .jewellery-mega-menu .category-container {
       display: grid;
       grid-template-columns: 0.8fr 1.35fr 1fr;
       gap: 20px;
       padding: 22px;
     }
 
-    .earrings-mega-menu .section-title {
+    .jewellery-mega-menu .section-title {
       font-size: 0.76rem;
       letter-spacing: 0.8px;
       color: var(--gold);
       margin-bottom: 12px;
     }
 
-    .earrings-mega-menu .shop-by-occasion ul {
+    .jewellery-mega-menu .shop-by-occasion ul {
       list-style: none;
       display: grid;
       gap: 5px;
     }
 
-    .earrings-mega-menu .shop-by-occasion a {
+    .jewellery-mega-menu .shop-by-occasion a {
       display: block;
       padding: 7px 9px;
     }
 
-    .earrings-mega-menu .popular-items {
+    .jewellery-mega-menu .popular-items {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
       align-content: start;
     }
 
-    .earrings-mega-menu .popular-items .section-title {
+    .jewellery-mega-menu .popular-items .section-title {
       grid-column: 1 / -1;
     }
 
-    .earrings-mega-menu .popular-item {
+    .jewellery-mega-menu .popular-item {
       display: grid;
       grid-template-columns: 54px 1fr;
       gap: 9px;
@@ -197,39 +197,39 @@
       background: #fffdf9;
     }
 
-    .earrings-mega-menu .popular-item img {
+    .jewellery-mega-menu .popular-item img {
       width: 54px;
       height: 54px;
       object-fit: cover;
       border-radius: 8px;
     }
 
-    .earrings-mega-menu .popular-item h4 {
+    .jewellery-mega-menu .popular-item h4 {
       color: var(--primary);
       font-size: 0.84rem;
       line-height: 1.2;
     }
 
-    .earrings-mega-menu .popular-item span {
+    .jewellery-mega-menu .popular-item span {
       color: var(--text-light);
       font-size: 0.72rem;
     }
 
-    .earrings-mega-menu .featured-product {
+    .jewellery-mega-menu .featured-product {
       display: flex;
       flex-direction: column;
       gap: 10px;
       min-width: 0;
     }
 
-    .earrings-mega-menu .featured-product img {
+    .jewellery-mega-menu .featured-product img {
       width: 100%;
       height: 175px;
       object-fit: cover;
       border-radius: 10px;
     }
 
-    .earrings-mega-menu .view-all-btn {
+    .jewellery-mega-menu .view-all-btn {
       display: block;
       text-align: center;
       background: var(--primary);
@@ -239,7 +239,7 @@
       font-weight: 600;
     }
 
-    .earrings-mega-menu .view-all-btn:hover {
+    .jewellery-mega-menu .view-all-btn:hover {
       background: var(--primary-dark);
       color: #fff;
     }
@@ -261,7 +261,7 @@
 
       .dropdown-menu,
       .dropdown-menu.shop-by-menu,
-      .dropdown-menu.earrings-mega-menu {
+      .dropdown-menu.jewellery-mega-menu {
         position: static;
         min-width: 0;
         width: 100%;
@@ -304,12 +304,12 @@
         padding: 9px;
       }
 
-      .earrings-mega-menu .category-container {
+      .jewellery-mega-menu .category-container {
         grid-template-columns: 1fr;
         padding: 10px;
       }
 
-      .earrings-mega-menu .popular-items {
+      .jewellery-mega-menu .popular-items {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -317,11 +317,11 @@
     @media (max-width: 480px) {
       .dropdown-menu,
       .dropdown-menu.shop-by-menu,
-      .dropdown-menu.earrings-mega-menu {
+      .dropdown-menu.jewellery-mega-menu {
         grid-template-columns: 1fr;
       }
 
-      .earrings-mega-menu .popular-items {
+      .jewellery-mega-menu .popular-items {
         grid-template-columns: 1fr;
       }
     }
@@ -363,18 +363,31 @@
       </div>
 
       <div class="header-actions">
+        
         <a href="tel:+919839638670" class="action-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-call" aria-hidden="true"><path d="M13 2a9 9 0 0 1 9 9"/><path d="M13 6a5 5 0 0 1 5 5"/><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke-width="1.5" 
+            stroke="currentColor" 
+            class="size-6"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z" 
+            />
+          </svg>
+  
           <span>Call</span>
         </a>
-
         <a href="https://wa.me/919839638670" target="_blank" class="action-btn whatsapp">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg>
+          <span class="action-icon">◉</span>
           <span>WhatsApp</span>
         </a>
-
         <a href="#contact" class="action-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></svg>
+          <span class="action-icon">⌖</span>
           <span>Visit Store</span>
         </a>
       </div>
@@ -386,28 +399,11 @@
     <nav class="main-nav" id="navMenu" aria-label="Main navigation">
       <a class="nav-direct" href="#collections">All Jewellery</a>
 
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown mega-dropdown">
         <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
           Necklaces <span class="chevron">⌄</span>
         </button>
-        <div class="dropdown-menu">
-          <div class="menu-heading">Gold Jewellery</div>
-          <a href="#collections">Rings</a>
-          <a href="#collections">Earrings</a>
-          <a href="#collections">Chains</a>
-          <a href="#collections">Necklaces</a>
-          <a href="#collections">Mangalsutra</a>
-          <a href="#collections">Bangles</a>
-          <a href="#collections">Bracelets</a>
-          <a href="#collections">Pendants</a>
-        </div>
-      </div>
-
-      <div class="nav-item has-dropdown mega-dropdown">
-        <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
-          Earrings &amp; Jhumkas <span class="chevron">⌄</span>
-        </button>
-        <div class="dropdown-menu earrings-mega-menu">
+        <div class="dropdown-menu jewellery-mega-menu">
           <!-- ===== EARRINGS & JHUMKAS SECTION ===== -->
           <section class="category-section" aria-label="Earrings and Jhumkas">
             <div class="category-container">
@@ -471,93 +467,479 @@
         </div>
       </div>
 
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown mega-dropdown">
+        <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+          Earrings &amp; Jhumkas <span class="chevron">⌄</span>
+        </button>
+        <div class="dropdown-menu jewellery-mega-menu">
+          <!-- ===== EARRINGS & JHUMKAS SECTION ===== -->
+          <section class="category-section" aria-label="Earrings and Jhumkas">
+            <div class="category-container">
+              <!-- LEFT: Shop by Occasion -->
+              <div class="shop-by-occasion">
+                <h3 class="section-title">SHOP BY OCCASION</h3>
+                <ul>
+                  <li><a href="#collections">Wedding</a></li>
+                  <li><a href="#collections">Dhanteras &amp; Diwali</a></li>
+                  <li><a href="#collections">Karva Chauth</a></li>
+                  <li><a href="#collections">Raksha Bandhan</a></li>
+                  <li><a href="#collections">Daily Wear</a></li>
+                  <li><a href="#collections">Gifting</a></li>
+                </ul>
+              </div>
+
+              <!-- CENTER: Popular Items -->
+              <div class="popular-items">
+                <h3 class="section-title">POPULAR</h3>
+
+                <div class="popular-item">
+                  <img src="/images/ruby-jhumka.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=300';" alt="Ruby Jhumka">
+                  <div class="item-info">
+                    <h4>Ruby Jhumka</h4>
+                    <span>22K · 14.6 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/chandbali.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Chandbali Earrings">
+                  <div class="item-info">
+                    <h4>Chandbali Earrings</h4>
+                    <span>22K · 12.4 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/pearl-studs.jpg" onerror="this.onerror=null;this.src='classic-gold-ring.jpg';" alt="Pearl Studs">
+                  <div class="item-info">
+                    <h4>Pearl Studs</h4>
+                    <span>18K · 3.8 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/gold-danglers.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Gold Danglers">
+                  <div class="item-info">
+                    <h4>Gold Danglers</h4>
+                    <span>22K · 9.1 g</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: Featured Image -->
+              <div class="featured-product">
+                <img src="/images/jhumka-featured.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600';" alt="Featured Jhumkas">
+                <a href="#collections" class="view-all-btn">View all Earrings &amp; Jhumkas</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="nav-item has-dropdown mega-dropdown">
         <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
           Bangles <span class="chevron">⌄</span>
         </button>
-        <div class="dropdown-menu">
-          <div class="menu-heading">Bridal Collection</div>
-          <a href="#collections">Bridal Sets</a>
-          <a href="#collections">Necklace Sets</a>
-          <a href="#collections">Choker Sets</a>
-          <a href="#collections">Rani Haar</a>
-          <a href="#collections">Maang Tikka</a>
-          <a href="#collections">Nath</a>
+        <div class="dropdown-menu jewellery-mega-menu">
+          <!-- ===== EARRINGS & JHUMKAS SECTION ===== -->
+          <section class="category-section" aria-label="Earrings and Jhumkas">
+            <div class="category-container">
+              <!-- LEFT: Shop by Occasion -->
+              <div class="shop-by-occasion">
+                <h3 class="section-title">SHOP BY OCCASION</h3>
+                <ul>
+                  <li><a href="#collections">Wedding</a></li>
+                  <li><a href="#collections">Dhanteras &amp; Diwali</a></li>
+                  <li><a href="#collections">Karva Chauth</a></li>
+                  <li><a href="#collections">Raksha Bandhan</a></li>
+                  <li><a href="#collections">Daily Wear</a></li>
+                  <li><a href="#collections">Gifting</a></li>
+                </ul>
+              </div>
+
+              <!-- CENTER: Popular Items -->
+              <div class="popular-items">
+                <h3 class="section-title">POPULAR</h3>
+
+                <div class="popular-item">
+                  <img src="/images/ruby-jhumka.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=300';" alt="Ruby Jhumka">
+                  <div class="item-info">
+                    <h4>Ruby Jhumka</h4>
+                    <span>22K · 14.6 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/chandbali.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Chandbali Earrings">
+                  <div class="item-info">
+                    <h4>Chandbali Earrings</h4>
+                    <span>22K · 12.4 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/pearl-studs.jpg" onerror="this.onerror=null;this.src='classic-gold-ring.jpg';" alt="Pearl Studs">
+                  <div class="item-info">
+                    <h4>Pearl Studs</h4>
+                    <span>18K · 3.8 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/gold-danglers.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Gold Danglers">
+                  <div class="item-info">
+                    <h4>Gold Danglers</h4>
+                    <span>22K · 9.1 g</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: Featured Image -->
+              <div class="featured-product">
+                <img src="/images/jhumka-featured.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600';" alt="Featured Jhumkas">
+                <a href="#collections" class="view-all-btn">View all Earrings &amp; Jhumkas</a>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
 
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown mega-dropdown">
         <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
           Rings <span class="chevron">⌄</span>
         </button>
-        <div class="dropdown-menu shop-by-menu">
-          <div class="menu-heading">Shop By Style & Occasion</div>
-          <a href="#collections">Women</a>
-          <a href="#collections">Men</a>
-          <a href="#collections">Kids</a>
-          <a href="#collections">Wedding</a>
-          <a href="#collections">Daily Wear</a>
-          <a href="#collections">Gifts</a>
+        <div class="dropdown-menu jewellery-mega-menu">
+          <!-- ===== EARRINGS & JHUMKAS SECTION ===== -->
+          <section class="category-section" aria-label="Earrings and Jhumkas">
+            <div class="category-container">
+              <!-- LEFT: Shop by Occasion -->
+              <div class="shop-by-occasion">
+                <h3 class="section-title">SHOP BY OCCASION</h3>
+                <ul>
+                  <li><a href="#collections">Wedding</a></li>
+                  <li><a href="#collections">Dhanteras &amp; Diwali</a></li>
+                  <li><a href="#collections">Karva Chauth</a></li>
+                  <li><a href="#collections">Raksha Bandhan</a></li>
+                  <li><a href="#collections">Daily Wear</a></li>
+                  <li><a href="#collections">Gifting</a></li>
+                </ul>
+              </div>
+
+              <!-- CENTER: Popular Items -->
+              <div class="popular-items">
+                <h3 class="section-title">POPULAR</h3>
+
+                <div class="popular-item">
+                  <img src="/images/ruby-jhumka.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=300';" alt="Ruby Jhumka">
+                  <div class="item-info">
+                    <h4>Ruby Jhumka</h4>
+                    <span>22K · 14.6 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/chandbali.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Chandbali Earrings">
+                  <div class="item-info">
+                    <h4>Chandbali Earrings</h4>
+                    <span>22K · 12.4 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/pearl-studs.jpg" onerror="this.onerror=null;this.src='classic-gold-ring.jpg';" alt="Pearl Studs">
+                  <div class="item-info">
+                    <h4>Pearl Studs</h4>
+                    <span>18K · 3.8 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/gold-danglers.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Gold Danglers">
+                  <div class="item-info">
+                    <h4>Gold Danglers</h4>
+                    <span>22K · 9.1 g</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: Featured Image -->
+              <div class="featured-product">
+                <img src="/images/jhumka-featured.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600';" alt="Featured Jhumkas">
+                <a href="#collections" class="view-all-btn">View all Earrings &amp; Jhumkas</a>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
 
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown mega-dropdown">
         <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
           Mangalsutra <span class="chevron">⌄</span>
         </button>
-        <div class="dropdown-menu shop-by-menu">
-          <div class="menu-heading">Shop By Style & Occasion</div>
-          <a href="#collections">Women</a>
-          <a href="#collections">Men</a>
-          <a href="#collections">Kids</a>
-          <a href="#collections">Wedding</a>
-          <a href="#collections">Daily Wear</a>
-          <a href="#collections">Gifts</a>
+        <div class="dropdown-menu jewellery-mega-menu">
+          <!-- ===== EARRINGS & JHUMKAS SECTION ===== -->
+          <section class="category-section" aria-label="Earrings and Jhumkas">
+            <div class="category-container">
+              <!-- LEFT: Shop by Occasion -->
+              <div class="shop-by-occasion">
+                <h3 class="section-title">SHOP BY OCCASION</h3>
+                <ul>
+                  <li><a href="#collections">Wedding</a></li>
+                  <li><a href="#collections">Dhanteras &amp; Diwali</a></li>
+                  <li><a href="#collections">Karva Chauth</a></li>
+                  <li><a href="#collections">Raksha Bandhan</a></li>
+                  <li><a href="#collections">Daily Wear</a></li>
+                  <li><a href="#collections">Gifting</a></li>
+                </ul>
+              </div>
+
+              <!-- CENTER: Popular Items -->
+              <div class="popular-items">
+                <h3 class="section-title">POPULAR</h3>
+
+                <div class="popular-item">
+                  <img src="/images/ruby-jhumka.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=300';" alt="Ruby Jhumka">
+                  <div class="item-info">
+                    <h4>Ruby Jhumka</h4>
+                    <span>22K · 14.6 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/chandbali.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Chandbali Earrings">
+                  <div class="item-info">
+                    <h4>Chandbali Earrings</h4>
+                    <span>22K · 12.4 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/pearl-studs.jpg" onerror="this.onerror=null;this.src='classic-gold-ring.jpg';" alt="Pearl Studs">
+                  <div class="item-info">
+                    <h4>Pearl Studs</h4>
+                    <span>18K · 3.8 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/gold-danglers.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Gold Danglers">
+                  <div class="item-info">
+                    <h4>Gold Danglers</h4>
+                    <span>22K · 9.1 g</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: Featured Image -->
+              <div class="featured-product">
+                <img src="/images/jhumka-featured.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600';" alt="Featured Jhumkas">
+                <a href="#collections" class="view-all-btn">View all Earrings &amp; Jhumkas</a>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
 
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown mega-dropdown">
         <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
           Chains <span class="chevron">⌄</span>
         </button>
-        <div class="dropdown-menu shop-by-menu">
-          <div class="menu-heading">Shop By Style & Occasion</div>
-          <a href="#collections">Women</a>
-          <a href="#collections">Men</a>
-          <a href="#collections">Kids</a>
-          <a href="#collections">Wedding</a>
-          <a href="#collections">Daily Wear</a>
-          <a href="#collections">Gifts</a>
+        <div class="dropdown-menu jewellery-mega-menu">
+          <!-- ===== EARRINGS & JHUMKAS SECTION ===== -->
+          <section class="category-section" aria-label="Earrings and Jhumkas">
+            <div class="category-container">
+              <!-- LEFT: Shop by Occasion -->
+              <div class="shop-by-occasion">
+                <h3 class="section-title">SHOP BY OCCASION</h3>
+                <ul>
+                  <li><a href="#collections">Wedding</a></li>
+                  <li><a href="#collections">Dhanteras &amp; Diwali</a></li>
+                  <li><a href="#collections">Karva Chauth</a></li>
+                  <li><a href="#collections">Raksha Bandhan</a></li>
+                  <li><a href="#collections">Daily Wear</a></li>
+                  <li><a href="#collections">Gifting</a></li>
+                </ul>
+              </div>
+
+              <!-- CENTER: Popular Items -->
+              <div class="popular-items">
+                <h3 class="section-title">POPULAR</h3>
+
+                <div class="popular-item">
+                  <img src="/images/ruby-jhumka.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=300';" alt="Ruby Jhumka">
+                  <div class="item-info">
+                    <h4>Ruby Jhumka</h4>
+                    <span>22K · 14.6 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/chandbali.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Chandbali Earrings">
+                  <div class="item-info">
+                    <h4>Chandbali Earrings</h4>
+                    <span>22K · 12.4 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/pearl-studs.jpg" onerror="this.onerror=null;this.src='classic-gold-ring.jpg';" alt="Pearl Studs">
+                  <div class="item-info">
+                    <h4>Pearl Studs</h4>
+                    <span>18K · 3.8 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/gold-danglers.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Gold Danglers">
+                  <div class="item-info">
+                    <h4>Gold Danglers</h4>
+                    <span>22K · 9.1 g</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: Featured Image -->
+              <div class="featured-product">
+                <img src="/images/jhumka-featured.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600';" alt="Featured Jhumkas">
+                <a href="#collections" class="view-all-btn">View all Earrings &amp; Jhumkas</a>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
 
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown mega-dropdown">
         <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
           Silver Articles <span class="chevron">⌄</span>
         </button>
-        <div class="dropdown-menu shop-by-menu">
-          <div class="menu-heading">Shop By Style & Occasion</div>
-          <a href="#collections">Women</a>
-          <a href="#collections">Men</a>
-          <a href="#collections">Kids</a>
-          <a href="#collections">Wedding</a>
-          <a href="#collections">Daily Wear</a>
-          <a href="#collections">Gifts</a>
+        <div class="dropdown-menu jewellery-mega-menu">
+          <!-- ===== EARRINGS & JHUMKAS SECTION ===== -->
+          <section class="category-section" aria-label="Earrings and Jhumkas">
+            <div class="category-container">
+              <!-- LEFT: Shop by Occasion -->
+              <div class="shop-by-occasion">
+                <h3 class="section-title">SHOP BY OCCASION</h3>
+                <ul>
+                  <li><a href="#collections">Wedding</a></li>
+                  <li><a href="#collections">Dhanteras &amp; Diwali</a></li>
+                  <li><a href="#collections">Karva Chauth</a></li>
+                  <li><a href="#collections">Raksha Bandhan</a></li>
+                  <li><a href="#collections">Daily Wear</a></li>
+                  <li><a href="#collections">Gifting</a></li>
+                </ul>
+              </div>
+
+              <!-- CENTER: Popular Items -->
+              <div class="popular-items">
+                <h3 class="section-title">POPULAR</h3>
+
+                <div class="popular-item">
+                  <img src="/images/ruby-jhumka.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=300';" alt="Ruby Jhumka">
+                  <div class="item-info">
+                    <h4>Ruby Jhumka</h4>
+                    <span>22K · 14.6 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/chandbali.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Chandbali Earrings">
+                  <div class="item-info">
+                    <h4>Chandbali Earrings</h4>
+                    <span>22K · 12.4 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/pearl-studs.jpg" onerror="this.onerror=null;this.src='classic-gold-ring.jpg';" alt="Pearl Studs">
+                  <div class="item-info">
+                    <h4>Pearl Studs</h4>
+                    <span>18K · 3.8 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/gold-danglers.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Gold Danglers">
+                  <div class="item-info">
+                    <h4>Gold Danglers</h4>
+                    <span>22K · 9.1 g</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: Featured Image -->
+              <div class="featured-product">
+                <img src="/images/jhumka-featured.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600';" alt="Featured Jhumkas">
+                <a href="#collections" class="view-all-btn">View all Earrings &amp; Jhumkas</a>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
 
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown mega-dropdown">
         <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
           Gold &amp; Silver Coins <span class="chevron">⌄</span>
         </button>
-        <div class="dropdown-menu shop-by-menu">
-          <div class="menu-heading">Shop By Style & Occasion</div>
-          <a href="#collections">Women</a>
-          <a href="#collections">Men</a>
-          <a href="#collections">Kids</a>
-          <a href="#collections">Wedding</a>
-          <a href="#collections">Daily Wear</a>
-          <a href="#collections">Gifts</a>
+        <div class="dropdown-menu jewellery-mega-menu">
+          <!-- ===== EARRINGS & JHUMKAS SECTION ===== -->
+          <section class="category-section" aria-label="Earrings and Jhumkas">
+            <div class="category-container">
+              <!-- LEFT: Shop by Occasion -->
+              <div class="shop-by-occasion">
+                <h3 class="section-title">SHOP BY OCCASION</h3>
+                <ul>
+                  <li><a href="#collections">Wedding</a></li>
+                  <li><a href="#collections">Dhanteras &amp; Diwali</a></li>
+                  <li><a href="#collections">Karva Chauth</a></li>
+                  <li><a href="#collections">Raksha Bandhan</a></li>
+                  <li><a href="#collections">Daily Wear</a></li>
+                  <li><a href="#collections">Gifting</a></li>
+                </ul>
+              </div>
+
+              <!-- CENTER: Popular Items -->
+              <div class="popular-items">
+                <h3 class="section-title">POPULAR</h3>
+
+                <div class="popular-item">
+                  <img src="/images/ruby-jhumka.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=300';" alt="Ruby Jhumka">
+                  <div class="item-info">
+                    <h4>Ruby Jhumka</h4>
+                    <span>22K · 14.6 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/chandbali.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Chandbali Earrings">
+                  <div class="item-info">
+                    <h4>Chandbali Earrings</h4>
+                    <span>22K · 12.4 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/pearl-studs.jpg" onerror="this.onerror=null;this.src='classic-gold-ring.jpg';" alt="Pearl Studs">
+                  <div class="item-info">
+                    <h4>Pearl Studs</h4>
+                    <span>18K · 3.8 g</span>
+                  </div>
+                </div>
+
+                <div class="popular-item">
+                  <img src="/images/gold-danglers.jpg" onerror="this.onerror=null;this.src='gold-jewellery.jpg';" alt="Gold Danglers">
+                  <div class="item-info">
+                    <h4>Gold Danglers</h4>
+                    <span>22K · 9.1 g</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: Featured Image -->
+              <div class="featured-product">
+                <img src="/images/jhumka-featured.jpg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600';" alt="Featured Jhumkas">
+                <a href="#collections" class="view-all-btn">View all Earrings &amp; Jhumkas</a>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
 
