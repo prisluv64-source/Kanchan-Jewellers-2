@@ -1,0 +1,39 @@
+name: Remove old hero section
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/remove-old-hero.yml'
+      - 'scripts/remove_old_hero.py'
+
+permissions:
+  contents: write
+
+jobs:
+  remove-old-hero:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Remove old hero section
+        run: python scripts/remove_old_hero.py
+
+      - name: Commit change
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "No change needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Remove old hero below carousel"
+          git push
