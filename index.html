@@ -3,304 +3,313 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Kanchan Jewellers — Gold, Silver and Diamond jewellery in Kanpur." />
-  <title>Kanchan Jewellers</title>
-
+  <meta name="description" content="Kanchan Jewellers — Gold, Silver and Diamond jewellery in Kanpur. Trusted jewellery for weddings, celebrations and everyday elegance." />
+  <title>Kanchan Jewellers | Gold • Silver • Diamond</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-
-  <style>
-    .photo-grid{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:18px;
-    }
-    .j-card{
-      overflow:hidden;
-      border:1px solid rgba(193,151,63,.28);
-      border-radius:18px;
-      background:#fff;
-      box-shadow:0 10px 30px rgba(33,20,8,.08);
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .j-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 16px 36px rgba(33,20,8,.14);
-    }
-    .j-card img{
-      width:100%;
-      height:230px;
-      display:block;
-      object-fit:cover;
-      background:#f4efe7;
-    }
-    .j-card-body{padding:15px 15px 17px}
-    .j-card h3{
-      margin:0 0 6px;
-      font-family:"Cormorant Garamond",serif;
-      font-size:1.35rem;
-    }
-    .j-card p{margin:0;opacity:.72;font-size:.88rem;line-height:1.5}
-    .product-photo-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:20px;
-    }
-    .product-photo-grid .j-card img{height:300px}
-    .contact-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-    @media(max-width:900px){
-      .photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .product-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    }
-    @media(max-width:560px){
-      .photo-grid,.product-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-      .j-card img{height:145px}
-      .product-photo-grid .j-card img{height:180px}
-      .j-card-body{padding:10px}
-      .j-card h3{font-size:1.05rem}
-      .j-card p{font-size:.76rem}
-    }
-  </style>
 </head>
-
 <body>
-  <div class="announcement">Gold • Silver • Diamond • Timeless Designs</div>
 
-  <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Kanchan Jewellers homepage">
-      <img class="brand-logo" src="logo-kj.jpg" alt="Kanchan Jewellers KJ logo">
-      <span class="brand-copy">
-        <strong>Kanchan Jewellers</strong>
-        <small>Gold • Silver • Diamond</small>
-      </span>
-    </a>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="location">
+        Near Dr. Dey's Hospital, Lal Bangla, Jajmau, Kanpur – 208007
+      </div>
+      <div class="rates">
+        <span class="rate-dot"></span>
+        Today's Rate: <strong>Gold 22K ₹7,250/g</strong> &nbsp;•&nbsp; <strong>Silver ₹98/g</strong>
+      </div>
+      <div class="top-right">
+        <span>EN</span>
+        <span>₹</span>
+      </div>
+    </div>
+  </div>
 
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <img src="logo-kj.jpg" alt="Kanchan Jewellers" class="brand-logo">
+        <div class="brand-text">
+          <strong>Kanchan Jewellers</strong>
+          <small>Gold • Silver • Diamond</small>
+        </div>
+      </a>
 
-    <nav id="navMenu">
-      <a href="#collections">Collections</a>
-      <a href="#featured">Featured</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <div class="search-box">
+        <input type="text" placeholder="Search for jewellery, occasions...">
+        <button>Search</button>
+      </div>
+
+      <div class="header-actions">
+        <a href="tel:+919839638670" class="action-btn">
+          <span>Call</span>
+        </a>
+        <a href="https://wa.me/919839638670" target="_blank" class="action-btn whatsapp">
+          <span>WhatsApp</span>
+        </a>
+        <a href="#contact" class="action-btn">
+          <span>Visit Store</span>
+        </a>
+      </div>
+
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="navMenu">
+      <a href="#collections">All Jewellery</a>
+      <a href="#collections">Gold</a>
+      <a href="#collections">Silver</a>
+      <a href="#collections">Bridal</a>
+      <a href="#collections">Rings</a>
+      <a href="#collections">Earrings</a>
+      <a href="#collections">Chains</a>
+      <a href="#collections">Bangles</a>
+      <a href="#about">Our Story</a>
+      <a href="#contact">Visit Us</a>
     </nav>
   </header>
 
   <main>
+
+    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
-        <p class="eyebrow">हर रिश्ते की चमक, हमारी ज्वेलरी के साथ</p>
-        <h1>Jewellery crafted for every celebration.</h1>
-        <p class="hero-copy">
-          Discover elegant gold, silver and diamond jewellery for weddings,
-          celebrations and everyday moments.
-        </p>
-
+        <span class="badge">Special Offer</span>
+        <h1>Bring Home<br>Prosperity & Joy</h1>
+        <p>Discover elegant gold, silver and diamond jewellery for weddings, celebrations and everyday moments. Special offers available this season.</p>
+        
         <div class="hero-actions">
-          <a class="btn primary" href="#collections">Explore Collections</a>
-          <a class="btn" href="https://wa.me/919839638670" target="_blank" rel="noopener noreferrer">
-            WhatsApp Us
+          <a href="https://wa.me/919839638670?text=Hi%20Kanchan%20Jewellers%2C%20I%20want%20to%20know%20about%20your%20jewellery%20collection." 
+             target="_blank" class="btn primary">
+            Claim on WhatsApp
           </a>
-          <a class="btn btn-outline" href="https://www.instagram.com/kanchanjewellersvipin/" target="_blank" rel="noopener">Instagram</a>
+          <a href="#collections" class="btn outline">Shop Now</a>
         </div>
 
         <div class="hero-points">
-          <span>✓ Elegant Designs</span>
-          <span>✓ Personal Assistance</span>
           <span>✓ Trusted Jewellery</span>
+          <span>✓ Personal Assistance</span>
+          <span>✓ Elegant Designs</span>
         </div>
       </div>
 
-      <div class="hero-banner-wrap">
-        <img src="Banner_2.jpg" class="hero-banner" alt="Kanchan Jewellers banner">
+      <div class="hero-image">
+        <img src="Banner_2.jpg" alt="Kanchan Jewellers Collection">
       </div>
     </section>
 
+    <!-- Shop by Category -->
     <section class="section" id="collections">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Shop by category</p>
+          <p class="eyebrow">Shop by Category</p>
           <h2>Our Collections</h2>
         </div>
-        <p>Explore jewellery for everyday elegance, gifting, weddings and special occasions.</p>
+        <a href="#contact" class="view-all">View all →</a>
       </div>
 
-      <div class="photo-grid">
-        <article class="j-card">
-          <img loading="lazy" src="gold-jewellery.jpg" alt="Gold Jewellery">
-          <div class="j-card-body"><h3>Gold Jewellery</h3><p>Elegant gold designs for every occasion.</p></div>
+      <div class="category-grid">
+        <article class="category-card">
+          <img src="gold-jewellery.jpg" alt="Gold Jewellery">
+          <div class="card-body">
+            <h3>Gold Jewellery</h3>
+            <p>Elegant gold designs for every occasion</p>
+          </div>
         </article>
 
-        <article class="j-card">
-          <img loading="lazy" src="silver-jewellery.jpg" alt="Silver Jewellery">
-          <div class="j-card-body"><h3>Silver Jewellery</h3><p>Stylish silver pieces with timeless appeal.</p></div>
+        <article class="category-card">
+          <img src="silver-jewellery.jpg" alt="Silver Jewellery">
+          <div class="card-body">
+            <h3>Silver Jewellery</h3>
+            <p>Stylish silver pieces with timeless appeal</p>
+          </div>
         </article>
 
-        <article class="j-card">
-          <img loading="lazy" src="https://images.pexels.com/photos/32077588/pexels-photo-32077588.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Bridal Jewellery">
-          <div class="j-card-body"><h3>Bridal</h3><p>Traditional bridal jewellery for the big day.</p></div>
+        <article class="category-card">
+          <img src="https://images.pexels.com/photos/32077588/pexels-photo-32077588.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Bridal">
+          <div class="card-body">
+            <h3>Bridal</h3>
+            <p>Traditional bridal jewellery for the big day</p>
+          </div>
         </article>
 
-        <article class="j-card">
-          <img loading="lazy" src="https://images.pexels.com/photos/15871502/pexels-photo-15871502.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Gold Rings">
-          <div class="j-card-body"><h3>Rings</h3><p>Classic and elegant rings for every style.</p></div>
+        <article class="category-card">
+          <img src="https://images.pexels.com/photos/15871502/pexels-photo-15871502.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Rings">
+          <div class="card-body">
+            <h3>Rings</h3>
+            <p>Classic and elegant rings for every style</p>
+          </div>
         </article>
 
-        <article class="j-card">
-          <img loading="lazy" src="https://images.pexels.com/photos/7419598/pexels-photo-7419598.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Gold Earrings">
-          <div class="j-card-body"><h3>Earrings</h3><p>Graceful earrings for festive and daily wear.</p></div>
+        <article class="category-card">
+          <img src="https://images.pexels.com/photos/7419598/pexels-photo-7419598.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Earrings">
+          <div class="card-body">
+            <h3>Earrings</h3>
+            <p>Graceful earrings for festive & daily wear</p>
+          </div>
         </article>
 
-        <article class="j-card">
-          <img loading="lazy" src="https://images.pexels.com/photos/14111400/pexels-photo-14111400.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Gold Chains">
-          <div class="j-card-body"><h3>Chains</h3><p>Refined gold chains with a premium finish.</p></div>
+        <article class="category-card">
+          <img src="https://images.pexels.com/photos/14111400/pexels-photo-14111400.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Chains">
+          <div class="card-body">
+            <h3>Chains</h3>
+            <p>Refined gold chains with premium finish</p>
+          </div>
         </article>
 
-        <article class="j-card">
-          <img loading="lazy" src="https://images.pexels.com/photos/37485307/pexels-photo-37485307.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Gold Bangles">
-          <div class="j-card-body"><h3>Bangles</h3><p>Traditional bangles with intricate detailing.</p></div>
+        <article class="category-card">
+          <img src="https://images.pexels.com/photos/37485307/pexels-photo-37485307.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Bangles">
+          <div class="card-body">
+            <h3>Bangles</h3>
+            <p>Traditional bangles with intricate detailing</p>
+          </div>
         </article>
 
-        <article class="j-card">
-          <img loading="lazy" src="https://images.pexels.com/photos/7067962/pexels-photo-7067962.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Silver Payal">
-          <div class="j-card-body"><h3>Payals</h3><p>Elegant silver anklets and payal designs.</p></div>
+        <article class="category-card">
+          <img src="https://images.pexels.com/photos/7067962/pexels-photo-7067962.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Payals">
+          <div class="card-body">
+            <h3>Payals</h3>
+            <p>Elegant silver anklets and payal designs</p>
+          </div>
         </article>
       </div>
     </section>
 
-    <section class="editorial-strip">
-      <div>
+    <!-- Editorial Strip -->
+    <section class="editorial">
+      <div class="editorial-content">
         <p class="eyebrow light">For every celebration</p>
-        <h2>Traditional soul. Modern elegance.</h2>
+        <h2>Traditional soul.<br>Modern elegance.</h2>
         <p>Classic silhouettes, rich detailing and jewellery chosen to make every occasion memorable.</p>
       </div>
     </section>
 
+    <!-- Featured -->
     <section class="section" id="featured">
       <div class="section-head">
         <div>
           <p class="eyebrow">Curated for you</p>
           <h2>Featured Jewellery</h2>
         </div>
-        <p>Selected jewellery styles from our premium collection.</p>
       </div>
 
-      <div class="product-photo-grid">
-        <article class="j-card">
-          <img loading="lazy" src="https://images.pexels.com/photos/5043048/pexels-photo-5043048.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Royal Gold Necklace">
-          <div class="j-card-body"><h3>Royal Gold Necklace</h3><p>Statement necklace with a regal traditional look.</p></div>
+      <div class="product-grid">
+        <article class="product-card">
+          <img src="https://images.pexels.com/photos/5043048/pexels-photo-5043048.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Royal Gold Necklace">
+          <div class="card-body">
+            <h3>Royal Gold Necklace</h3>
+            <p>Statement necklace with regal traditional look</p>
+            <a href="https://wa.me/919839638670?text=Hi%2C%20I%20am%20interested%20in%20Royal%20Gold%20Necklace" class="enquire-btn" target="_blank">Enquire on WhatsApp</a>
+          </div>
         </article>
 
-        <article class="j-card">
-          <img loading="lazy" src="classic-gold-ring.jpg" alt="Classic Gold Ring">
-          <div class="j-card-body"><h3>Classic Gold Ring</h3><p>A timeless ring for elegant everyday styling.</p></div>
+        <article class="product-card">
+          <img src="classic-gold-ring.jpg" alt="Classic Gold Ring">
+          <div class="card-body">
+            <h3>Classic Gold Ring</h3>
+            <p>Timeless ring for elegant everyday styling</p>
+            <a href="https://wa.me/919839638670?text=Hi%2C%20I%20am%20interested%20in%20Classic%20Gold%20Ring" class="enquire-btn" target="_blank">Enquire on WhatsApp</a>
+          </div>
         </article>
 
-        <article class="j-card">
-          <img loading="lazy" src="https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Heritage Jhumka">
-          <div class="j-card-body"><h3>Heritage Jhumka</h3><p>Traditional jhumka inspired by heritage craftsmanship.</p></div>
+        <article class="product-card">
+          <img src="https://images.pexels.com/photos/35137273/pexels-photo-35137273.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Heritage Jhumka">
+          <div class="card-body">
+            <h3>Heritage Jhumka</h3>
+            <p>Traditional jhumka inspired by heritage craftsmanship</p>
+            <a href="https://wa.me/919839638670?text=Hi%2C%20I%20am%20interested%20in%20Heritage%20Jhumka" class="enquire-btn" target="_blank">Enquire on WhatsApp</a>
+          </div>
         </article>
 
-        <article class="j-card">
-          <img loading="lazy" src="https://images.pexels.com/photos/7067964/pexels-photo-7067964.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Silver Payal Pair">
-          <div class="j-card-body"><h3>Silver Payal Pair</h3><p>Graceful silver anklets for festive and traditional wear.</p></div>
-        </article>
-
-        <article class="j-card">
-          <img loading="lazy" src="bridal-choker-set.png" alt="Bridal Choker Set">
-          <div class="j-card-body"><h3>Bridal Choker Set</h3><p>Rich bridal choker style for a grand wedding look.</p></div>
-        </article>
-
-        <article class="j-card">
-          <img loading="lazy" src="https://images.pexels.com/photos/14111399/pexels-photo-14111399.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Everyday Gold Chain">
-          <div class="j-card-body"><h3>Everyday Gold Chain</h3><p>Simple, polished gold chain for regular wear.</p></div>
+        <article class="product-card">
+          <img src="bridal-choker-set.png" alt="Bridal Choker Set">
+          <div class="card-body">
+            <h3>Bridal Choker Set</h3>
+            <p>Rich bridal choker for a grand wedding look</p>
+            <a href="https://wa.me/919839638670?text=Hi%2C%20I%20am%20interested%20in%20Bridal%20Choker%20Set" class="enquire-btn" target="_blank">Enquire on WhatsApp</a>
+          </div>
         </article>
       </div>
     </section>
 
+    <!-- About -->
     <section class="section about" id="about">
-      <div class="about-card about-story">
-        <p class="eyebrow">Our story</p>
+      <div class="about-content">
+        <p class="eyebrow">Our Story</p>
         <h2>Jewellery built on trust.</h2>
-        <p>
-          Kanchan Jewellers brings together timeless design,
-          warm service and jewellery for every important moment.
-        </p>
+        <p>Kanchan Jewellers brings together timeless design, warm service and jewellery for every important moment in life. From everyday elegance to grand celebrations — we are here for you.</p>
       </div>
-
-      <div class="about-card brand-showcase">
-        <img src="logo-kj.jpg" alt="Kanchan Jewellers monogram">
+      <div class="about-logo">
+        <img src="logo-kj.jpg" alt="Kanchan Jewellers">
       </div>
     </section>
 
+    <!-- Contact -->
     <section class="section contact" id="contact">
-      <div>
-        <p class="eyebrow">Visit us</p>
+      <div class="contact-info">
+        <p class="eyebrow">Visit Us</p>
         <h2>Kanchan Jewellers</h2>
-
-        <p class="contact-line">
-          H.N., Kazi Khera, near Dr. Dey's Hospital, Lal Bangla,
-          Jajmau Sub Metro City, Kanpur, Uttar Pradesh – 208007
+        <p class="address">
+          H.N., Kazi Khera, near Dr. Dey's Hospital,<br>
+          Lal Bangla, Jajmau Sub Metro City,<br>
+          Kanpur, Uttar Pradesh – 208007
         </p>
+        <p class="phone"><strong>WhatsApp / Mobile:</strong> +91 98396 38670</p>
 
-        <p class="contact-line">
-          <strong>WhatsApp / Mobile:</strong> +91 98396 38670
-        </p>
-
-        <div class="contact-actions">
-          <a class="btn primary" href="https://wa.me/919839638670" target="_blank" rel="noopener noreferrer">
-            WhatsApp Us
-          </a>
-
-          <a class="btn"
-             href="https://maps.google.com/maps?q=H.N%2C%2BKazi%2BKhera%2C%2Bnear%2BDr.%2BDey's%2BHospital%2C%2BLal%2BBangla%2C%2BJajmau%2BSub%2BMetro%2BCity%2C%2BKanpur%2C%2BUttar%2BPradesh%2B208007%2C%2BIndia&sll=26.419236275641314,80.38961693644524"
-             target="_blank"
-             rel="noopener noreferrer">
-            Open in Google Maps
-          </a>
+        <div class="contact-buttons">
+          <a href="https://wa.me/919839638670" target="_blank" class="btn primary">WhatsApp Us</a>
+          <a href="https://maps.google.com/maps?q=H.N%2C%2BKazi%2BKhera%2C%2Bnear%2BDr.%2BDey's%2BHospital%2C%2BLal%2BBangla%2C%2BJajmau%2BSub%2BMetro%2BCity%2C%2BKanpur%2C%2BUttar%2BPradesh%2B208007" 
+             target="_blank" class="btn outline">Open in Google Maps</a>
+          <a href="https://www.instagram.com/kanchanjewellersvipin/" target="_blank" class="btn outline">Instagram</a>
         </div>
       </div>
-
-      <div class="contact-banner">
-        <img src="brand-banner.jpg" alt="Kanchan Jewellers store information banner">
+      <div class="contact-image">
+        <img src="brand-banner.jpg" alt="Kanchan Jewellers Store">
       </div>
     </section>
+
   </main>
 
+  <!-- Footer -->
   <footer>
-    <div class="footer-brand">
-      <strong>Kanchan Jewellers</strong>
-      <span>Gold • Silver • Diamond</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>Kanchan Jewellers</strong>
+        <span>Gold • Silver • Diamond</span>
+      </div>
+      <div class="footer-links">
+        <a href="#collections">Collections</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p>© <span id="year"></span> Kanchan Jewellers. All rights reserved.</p>
     </div>
-
-    <div class="footer-links">
-      <a href="#collections">Collections</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <p>© <span id="year"></span> Kanchan Jewellers. All rights reserved.</p>
   </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/919839638670" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff">
+      <path d="M16.004 2.002c-7.732 0-14 6.268-14 14 0 2.465.643 4.86 1.863 6.975L2 30l7.22-1.89A13.93 13.93 0 0 0 16.004 30c7.732 0 14-6.268 14-14s-6.268-14-14-14zm0 25.5a11.47 11.47 0 0 1-5.86-1.605l-.42-.25-4.28 1.12 1.14-4.17-.27-.43A11.47 11.47 0 0 1 4.5 16c0-6.35 5.15-11.5 11.5-11.5S27.5 9.65 27.5 16 22.35 27.5 16 27.5z"/>
+      <path d="M22.15 19.35c-.3-.15-1.78-.88-2.05-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.5-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.23 5.15 4.53 1.92.83 2.67.9 3.63.76.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35z"/>
+    </svg>
+  </a>
 
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const navMenu = document.getElementById('navMenu');
-
     if (menuBtn && navMenu) {
       menuBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
       navMenu.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => navMenu.classList.remove('open'));
       });
     }
-
-    const year = document.getElementById('year');
-    if (year) year.textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
