@@ -187,7 +187,6 @@ a {
   font-size: 0.85rem;
   font-weight: 500;
   border: 1px solid var(--border);
-  margin-left: 200px;
   transition: var(--transition);
 }
 
