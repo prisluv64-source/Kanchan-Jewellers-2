@@ -7,8 +7,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - '.github/workflows/update-delhi-rates.yml'
-      - 'scripts/apply_header_action_svgs.py'
+      - 'scripts/update_rates.py'
 
 permissions:
   contents: write
@@ -26,17 +25,20 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Apply header action SVG icons
-        run: python scripts/apply_header_action_svgs.py
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
 
-      - name: Commit header icon update
+      - name: Fetch Delhi rates and update website
+        run: python scripts/update_rates.py
+
+      - name: Commit updated rates
         run: |
           if git diff --quiet -- index.html; then
-            echo "Header icons already applied; nothing to commit."
+            echo "Rates unchanged; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Add SVG icons to header action buttons"
+          git commit -m "Update Delhi jewellery rates"
           git push
