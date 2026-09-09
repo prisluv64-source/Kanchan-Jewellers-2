@@ -9,8 +9,201 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Rich desktop dropdown + mobile accordion navigation -->
+  <style>
+    .main-nav {
+      align-items: center;
+      overflow: visible;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--text-light);
+      font: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 4px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible,
+    .has-dropdown:hover > .nav-link,
+    .has-dropdown:focus-within > .nav-link {
+      color: var(--primary);
+    }
+
+    .chevron {
+      font-size: 0.78rem;
+      line-height: 1;
+      transition: transform 0.22s ease;
+    }
+
+    .has-dropdown:hover .chevron,
+    .has-dropdown:focus-within .chevron,
+    .has-dropdown.open .chevron {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translate(-50%, 8px);
+      min-width: 330px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 18px 45px rgba(33, 20, 8, 0.16);
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(130px, 1fr));
+      gap: 4px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 300;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -7px;
+      left: 50%;
+      width: 13px;
+      height: 13px;
+      background: #fff;
+      border-left: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .has-dropdown:hover > .dropdown-menu,
+    .has-dropdown:focus-within > .dropdown-menu,
+    .has-dropdown.open > .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+    }
+
+    .dropdown-menu a {
+      position: relative;
+      z-index: 1;
+      padding: 10px 12px;
+      border-radius: 9px;
+      color: var(--text-light);
+      font-size: 0.86rem;
+      line-height: 1.25;
+      transition: var(--transition);
+    }
+
+    .dropdown-menu a::after {
+      display: none !important;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus-visible {
+      color: var(--primary);
+      background: #f8f4ee;
+    }
+
+    .dropdown-menu .menu-heading {
+      grid-column: 1 / -1;
+      padding: 7px 12px 8px;
+      margin-bottom: 3px;
+      border-bottom: 1px solid var(--border);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .dropdown-menu.shop-by-menu {
+      min-width: 390px;
+      grid-template-columns: repeat(3, minmax(105px, 1fr));
+    }
+
+    @media (max-width: 768px) {
+      .main-nav {
+        align-items: stretch;
+      }
+
+      .nav-item {
+        width: 100%;
+      }
+
+      .nav-link {
+        width: 100%;
+        justify-content: space-between;
+        padding: 7px 0;
+      }
+
+      .dropdown-menu,
+      .dropdown-menu.shop-by-menu {
+        position: static;
+        min-width: 0;
+        width: 100%;
+        transform: none;
+        display: none;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        margin-top: 5px;
+        padding: 8px;
+        border-radius: 10px;
+        box-shadow: none;
+        background: #f8f4ee;
+      }
+
+      .dropdown-menu::before {
+        display: none;
+      }
+
+      .has-dropdown:hover > .dropdown-menu,
+      .has-dropdown:focus-within > .dropdown-menu {
+        display: none;
+        transform: none;
+      }
+
+      .has-dropdown.open > .dropdown-menu,
+      .has-dropdown.open:hover > .dropdown-menu,
+      .has-dropdown.open:focus-within > .dropdown-menu {
+        display: grid;
+      }
+
+      .dropdown-menu .menu-heading {
+        background: transparent;
+        padding-left: 9px;
+      }
+
+      .dropdown-menu a {
+        padding: 9px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dropdown-menu,
+      .dropdown-menu.shop-by-menu {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
-<body>
+<body id="top">
 
   <!-- Top Bar -->
   <div class="top-bar">
@@ -57,21 +250,80 @@
         </a>
       </div>
 
-      <button class="menu-btn" id="menuBtn">☰</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
     </div>
 
-    <!-- Navigation -->
-    <nav class="main-nav" id="navMenu">
-      <a href="#collections">All Jewellery</a>
-      <a href="#collections">Gold</a>
-      <a href="#collections">Silver</a>
-      <a href="#collections">Bridal</a>
-      <a href="#collections">Rings</a>
-      <a href="#collections">Earrings</a>
-      <a href="#collections">Chains</a>
-      <a href="#collections">Bangles</a>
-      <a href="#about">Our Story</a>
-      <a href="#contact">Visit Us</a>
+    <!-- Jewellery Navigation -->
+    <nav class="main-nav" id="navMenu" aria-label="Main navigation">
+      <a class="nav-direct" href="#collections">All Jewellery</a>
+
+      <div class="nav-item has-dropdown">
+        <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+          Gold <span class="chevron">⌄</span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-heading">Gold Jewellery</div>
+          <a href="#collections">Rings</a>
+          <a href="#collections">Earrings</a>
+          <a href="#collections">Chains</a>
+          <a href="#collections">Necklaces</a>
+          <a href="#collections">Mangalsutra</a>
+          <a href="#collections">Bangles</a>
+          <a href="#collections">Bracelets</a>
+          <a href="#collections">Pendants</a>
+        </div>
+      </div>
+
+      <div class="nav-item has-dropdown">
+        <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+          Silver <span class="chevron">⌄</span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-heading">Silver Jewellery</div>
+          <a href="#collections">Payal</a>
+          <a href="#collections">Bichhiya</a>
+          <a href="#collections">Kada</a>
+          <a href="#collections">Chains</a>
+          <a href="#collections">Rings</a>
+          <a href="#collections">Coins</a>
+          <a href="#collections">Silver Articles</a>
+          <a href="#collections">Gift Items</a>
+        </div>
+      </div>
+
+      <div class="nav-item has-dropdown">
+        <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+          Bridal <span class="chevron">⌄</span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-heading">Bridal Collection</div>
+          <a href="#collections">Bridal Sets</a>
+          <a href="#collections">Necklace Sets</a>
+          <a href="#collections">Choker Sets</a>
+          <a href="#collections">Rani Haar</a>
+          <a href="#collections">Maang Tikka</a>
+          <a href="#collections">Nath</a>
+        </div>
+      </div>
+
+      <div class="nav-item has-dropdown">
+        <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+          Shop By <span class="chevron">⌄</span>
+        </button>
+        <div class="dropdown-menu shop-by-menu">
+          <div class="menu-heading">Shop By Style & Occasion</div>
+          <a href="#collections">Women</a>
+          <a href="#collections">Men</a>
+          <a href="#collections">Kids</a>
+          <a href="#collections">Wedding</a>
+          <a href="#collections">Daily Wear</a>
+          <a href="#collections">Gifts</a>
+        </div>
+      </div>
+
+      <a class="nav-direct" href="#featured">Featured</a>
+      <a class="nav-direct" href="#about">Our Story</a>
+      <a class="nav-direct" href="#contact">Visit Us</a>
     </nav>
   </header>
 
@@ -303,12 +555,66 @@
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const navMenu = document.getElementById('navMenu');
+    const dropdownItems = document.querySelectorAll('.has-dropdown');
+
     if (menuBtn && navMenu) {
-      menuBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+      menuBtn.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+
       navMenu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => navMenu.classList.remove('open'));
+        a.addEventListener('click', () => {
+          navMenu.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          dropdownItems.forEach(item => {
+            item.classList.remove('open');
+            const toggle = item.querySelector('.dropdown-toggle');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
       });
     }
+
+    dropdownItems.forEach(item => {
+      const toggle = item.querySelector('.dropdown-toggle');
+      if (!toggle) return;
+
+      toggle.addEventListener('click', () => {
+        const willOpen = !item.classList.contains('open');
+
+        if (window.innerWidth <= 768) {
+          dropdownItems.forEach(other => {
+            if (other !== item) {
+              other.classList.remove('open');
+              const otherToggle = other.querySelector('.dropdown-toggle');
+              if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+
+        item.classList.toggle('open', willOpen);
+        toggle.setAttribute('aria-expanded', String(willOpen));
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (window.innerWidth > 768 && !event.target.closest('.has-dropdown')) {
+        dropdownItems.forEach(item => {
+          item.classList.remove('open');
+          const toggle = item.querySelector('.dropdown-toggle');
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navMenu) {
+        navMenu.classList.remove('open');
+        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
