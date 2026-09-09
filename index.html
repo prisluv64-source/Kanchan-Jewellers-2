@@ -949,6 +949,39 @@
     </nav>
   </header>
 
+  <!-- ===== HOME PROMO CAROUSEL ===== -->
+  <section class="home-carousel" id="homeCarousel" aria-label="Featured jewellery offers">
+    <div class="home-carousel-track">
+      <div class="home-carousel-slide active">
+        <img src="carousel/banner-1.webp" alt="Jewellery for every story">
+      </div>
+      <div class="home-carousel-slide">
+        <img src="carousel/banner-2.webp" alt="Moments shine brighter with gold">
+      </div>
+      <div class="home-carousel-slide">
+        <img src="carousel/banner-3.webp" alt="Crafted for life's special moments">
+      </div>
+      <div class="home-carousel-slide">
+        <img src="carousel/banner-4.webp" alt="Grace in every detail">
+      </div>
+      <div class="home-carousel-slide">
+        <img src="carousel/banner-5.webp" alt="More than jewellery">
+      </div>
+    </div>
+
+    <button class="home-carousel-arrow home-carousel-prev" type="button" aria-label="Previous banner">‹</button>
+    <button class="home-carousel-arrow home-carousel-next" type="button" aria-label="Next banner">›</button>
+
+    <div class="home-carousel-dots" aria-label="Choose banner">
+      <button class="active" type="button" aria-label="Show banner 1"></button>
+      <button type="button" aria-label="Show banner 2"></button>
+      <button type="button" aria-label="Show banner 3"></button>
+      <button type="button" aria-label="Show banner 4"></button>
+      <button type="button" aria-label="Show banner 5"></button>
+    </div>
+  </section>
+
+
   <main>
 
     <!-- Hero Section -->
@@ -1240,5 +1273,75 @@
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   </script>
+
+
+  <!-- ===== HOME PROMO CAROUSEL SCRIPT ===== -->
+  <script>
+    (() => {
+      const carousel = document.getElementById('homeCarousel');
+      if (!carousel) return;
+
+      const slides = [...carousel.querySelectorAll('.home-carousel-slide')];
+      const dots = [...carousel.querySelectorAll('.home-carousel-dots button')];
+      const prev = carousel.querySelector('.home-carousel-prev');
+      const next = carousel.querySelector('.home-carousel-next');
+      let current = 0;
+      let timer = null;
+      const delay = 5000;
+
+      const show = (index) => {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+      };
+
+      const stop = () => {
+        if (timer) clearInterval(timer);
+        timer = null;
+      };
+
+      const start = () => {
+        stop();
+        timer = setInterval(() => show(current + 1), delay);
+      };
+
+      prev?.addEventListener('click', () => {
+        show(current - 1);
+        start();
+      });
+
+      next?.addEventListener('click', () => {
+        show(current + 1);
+        start();
+      });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          show(i);
+          start();
+        });
+      });
+
+      carousel.addEventListener('mouseenter', stop);
+      carousel.addEventListener('mouseleave', start);
+
+      let touchStartX = 0;
+      carousel.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+      }, { passive: true });
+
+      carousel.addEventListener('touchend', (event) => {
+        const delta = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(delta) > 45) {
+          show(current + (delta < 0 ? 1 : -1));
+          start();
+        }
+      }, { passive: true });
+
+      show(0);
+      start();
+    })();
+  </script>
+
 </body>
 </html>
