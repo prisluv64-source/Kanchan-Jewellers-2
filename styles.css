@@ -205,6 +205,13 @@ a {
   line-height: 1;
 }
 
+.action-svg {
+  width: 21px;
+  height: 21px;
+  display: block;
+  flex: 0 0 auto;
+}
+
 .action-btn.whatsapp {
   background: #25d366;
   color: white;
