@@ -176,6 +176,7 @@ a {
   display: flex;
   gap: 10px;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .action-btn {
