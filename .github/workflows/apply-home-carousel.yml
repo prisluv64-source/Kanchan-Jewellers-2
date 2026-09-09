@@ -1,0 +1,39 @@
+name: Apply home carousel
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-home-carousel.yml'
+      - 'scripts/apply_home_carousel.py'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-carousel:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Apply carousel to website
+        run: python scripts/apply_home_carousel.py
+
+      - name: Commit carousel integration
+        run: |
+          if git diff --quiet -- index.html styles.css; then
+            echo "Carousel already present; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html styles.css
+          git commit -m "Add auto rotating jewellery carousel below navigation"
+          git push
