@@ -181,18 +181,28 @@ a {
 
 .action-btn {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: 50px;
-  font-size: 0.85rem;
+  justify-content: center;
+
+  gap: 3px;
+
+  padding: 7px 12px;
+  border-radius: 12px;
+
+  font-size: 0.78rem;
   font-weight: 500;
+
   border: 1px solid var(--border);
-  transition: var(--transition);
 }
 
 .action-btn:hover {
   background: #f8f4ee;
+}
+
+.action-icon {
+  font-size: 1.15rem;
+  line-height: 1;
 }
 
 .action-btn.whatsapp {
