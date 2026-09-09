@@ -2,26 +2,23 @@ import re
 from pathlib import Path
 
 import requests
-from bs4 import BeautifulSoup
 
-GOLD_URL = "https://www.ndtv.com/gold-rate/gold-price-delhi"
-SILVER_URL = "https://www.ndtv.com/silver-rate/silver-price-delhi"
+# NDTV blocks direct GitHub-hosted requests with HTTP 403. Jina Reader fetches the
+# public pages server-side and exposes the readable text/markdown for automation.
+GOLD_URL = "https://r.jina.ai/http://www.ndtv.com/gold-rate/gold-price-delhi"
+SILVER_URL = "https://r.jina.ai/http://www.ndtv.com/silver-rate/silver-price-delhi"
 INDEX_PATH = Path("index.html")
 
 HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/140.0 Safari/537.36"
-    )
+    "User-Agent": "KanchanJewellersRateUpdater/1.0",
+    "Accept": "text/plain, text/markdown, */*",
 }
 
 
 def page_text(url: str) -> str:
-    response = requests.get(url, headers=HEADERS, timeout=30)
+    response = requests.get(url, headers=HEADERS, timeout=60)
     response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
-    return " ".join(soup.stripped_strings)
+    return " ".join(response.text.split())
 
 
 def clean_number(value: str) -> str:
@@ -36,6 +33,7 @@ def extract_gold_22k(text: str) -> str:
     patterns = [
         r"gold price in Delhi is\s*₹\s*[\d,.]+\s*per gram for 24-karat gold,\s*₹\s*([\d,.]+)\s*per gram for 22-karat gold",
         r"22K Gold/g\s*₹\s*([\d,.]+)",
+        r"22-karat gold[^₹]{0,40}₹\s*([\d,.]+)",
     ]
     for pattern in patterns:
         match = re.search(pattern, text, flags=re.IGNORECASE)
@@ -48,6 +46,7 @@ def extract_silver_1g(text: str) -> str:
     patterns = [
         r"silver price in Delhi is\s*₹\s*([\d,.]+)\s*per gram",
         r"1g\s*₹\s*([\d,.]+)",
+        r"1 Gram[^₹]{0,40}₹\s*([\d,.]+)",
     ]
     for pattern in patterns:
         match = re.search(pattern, text, flags=re.IGNORECASE)
@@ -59,7 +58,10 @@ def extract_silver_1g(text: str) -> str:
 def update_index(gold: str, silver: str) -> None:
     html = INDEX_PATH.read_text(encoding="utf-8")
     pattern = re.compile(
-        r"Today's Rate:\s*<strong>Gold 22K ₹[^<]+</strong>\s*&nbsp;•&nbsp;\s*<strong>Silver ₹[^<]+</strong>"
+        r"(?:Today's Rate|Delhi Rate):\s*"
+        r"<strong>Gold 22K ₹[^<]+</strong>\s*"
+        r"&nbsp;•&nbsp;\s*"
+        r"<strong>Silver ₹[^<]+</strong>"
     )
     replacement = (
         f"Delhi Rate: <strong>Gold 22K ₹{gold}/g</strong> "
