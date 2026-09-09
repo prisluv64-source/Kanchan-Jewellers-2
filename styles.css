@@ -958,3 +958,37 @@ footer p {
     color: #ffffff !important;
   }
 }
+
+
+/* ===== SINGLE-LINE LEFT-ALIGNED DESKTOP NAV ===== */
+@media (min-width: 769px) {
+  .main-nav {
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 6px 12px !important;
+    gap: 0 !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+  }
+
+  .main-nav > a,
+  .main-nav > .nav-item {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    margin-right: 25px !important;
+  }
+
+  .main-nav > a:last-child,
+  .main-nav > .nav-item:last-child {
+    margin-right: 0 !important;
+  }
+
+  .main-nav .nav-link,
+  .main-nav .nav-direct {
+    white-space: nowrap !important;
+  }
+}
