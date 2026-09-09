@@ -1121,3 +1121,26 @@ footer p {
 
   .home-carousel-dots button.active { width: 18px; }
 }
+
+
+/* ===== CLICKABLE CAROUSEL IMAGE BUTTONS ===== */
+.carousel-image-cta {
+  position: absolute;
+  z-index: 3;
+  display: block;
+  cursor: pointer;
+  border-radius: 12px;
+  background: transparent;
+}
+
+/* Hotspot positions match the button artwork baked into each banner image. */
+.carousel-image-cta-1 { left: 7.2%; top: 75.0%; width: 17.8%; height: 10.5%; }
+.carousel-image-cta-2 { left: 7.0%; top: 64.5%; width: 16.5%; height: 10.0%; }
+.carousel-image-cta-3 { left: 8.3%; top: 71.5%; width: 20.8%; height: 11.0%; }
+.carousel-image-cta-4 { left: 6.5%; top: 63.5%; width: 19.8%; height: 10.5%; }
+.carousel-image-cta-5 { left: 6.5%; top: 62.5%; width: 20.0%; height: 10.5%; }
+
+.carousel-image-cta:focus-visible {
+  outline: 2px solid rgba(255,255,255,.9);
+  outline-offset: 2px;
+}
