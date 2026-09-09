@@ -2,61 +2,58 @@ import re
 from pathlib import Path
 
 import requests
+from bs4 import BeautifulSoup
 
-BASE_URL = "https://api.apimitra.in/commodities"
+GOLD_URL = "https://malayalam.goodreturns.in/gold-rates/delhi.html"
+SILVER_URL = "https://malayalam.goodreturns.in/silver-rates/delhi.html"
 INDEX_PATH = Path("index.html")
 
 HEADERS = {
-    "User-Agent": "KanchanJewellersRateUpdater/1.0",
-    "Accept": "application/json",
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36"
+    ),
+    "Accept-Language": "en-US,en;q=0.9",
 }
 
 
-def get_city_rate(metal: str) -> dict:
-    response = requests.get(
-        BASE_URL,
-        params={"metal": metal, "city": "delhi"},
-        headers=HEADERS,
-        timeout=30,
-    )
+def page_text(url: str) -> str:
+    response = requests.get(url, headers=HEADERS, timeout=30)
     response.raise_for_status()
-    payload = response.json()
-
-    if payload.get("status") != "ok" or not payload.get("data"):
-        raise RuntimeError(f"No Delhi {metal} data returned: {payload}")
-
-    return payload["data"][0]
+    soup = BeautifulSoup(response.text, "html.parser")
+    return " ".join(soup.stripped_strings)
 
 
-def clean_number(value) -> str:
-    number = float(value)
+def clean_number(value: str) -> str:
+    number = float(value.replace(",", "").strip())
     if number.is_integer():
         return f"{int(number):,}"
     return f"{number:,.2f}".rstrip("0").rstrip(".")
 
 
-def extract_gold_22k(item: dict) -> str:
-    details = item.get("details") or {}
-    value = details.get("price_22k")
-    if value is None:
-        raise RuntimeError(f"Delhi gold response has no price_22k: {item}")
-    return clean_number(value)
+def extract_gold_22k(text: str) -> str:
+    patterns = [
+        r"22K[^₹]{0,120}₹\s*([\d,.]+)",
+        r"22\s*കാരറ്റ്[^₹]{0,120}₹\s*([\d,.]+)",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            return clean_number(match.group(1))
+    raise RuntimeError("Could not find Delhi 22K gold rate on Goodreturns page")
 
 
-def extract_silver_1g(item: dict) -> str:
-    details = item.get("details") or {}
-
-    # Prefer an explicit 1-gram / 999-fineness field if the API provides one.
-    for key in ("price_999", "price_1g", "price_per_gram", "silver_999"):
-        if details.get(key) is not None:
-            return clean_number(details[key])
-
-    # API Mitra's commodity `price` is the headline city price. For silver this
-    # endpoint is expected to be INR per gram.
-    if item.get("price") is not None:
-        return clean_number(item["price"])
-
-    raise RuntimeError(f"Delhi silver response has no usable per-gram price: {item}")
+def extract_silver_1g(text: str) -> str:
+    patterns = [
+        r"(?:Silver|വെള്ളി)[^₹]{0,160}/g[^₹]{0,80}₹\s*([\d,.]+)",
+        r"(?:Silver|വെള്ളി)[^₹]{0,160}gram[^₹]{0,80}₹\s*([\d,.]+)",
+        r"1\s*\|\s*₹\s*([\d,.]+)",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            return clean_number(match.group(1))
+    raise RuntimeError("Could not find Delhi silver per-gram rate on Goodreturns page")
 
 
 def update_index(gold: str, silver: str) -> None:
@@ -81,10 +78,10 @@ def update_index(gold: str, silver: str) -> None:
 
 
 def main() -> None:
-    gold_item = get_city_rate("gold")
-    silver_item = get_city_rate("silver")
-    gold = extract_gold_22k(gold_item)
-    silver = extract_silver_1g(silver_item)
+    gold_text = page_text(GOLD_URL)
+    silver_text = page_text(SILVER_URL)
+    gold = extract_gold_22k(gold_text)
+    silver = extract_silver_1g(silver_text)
     update_index(gold, silver)
 
 
