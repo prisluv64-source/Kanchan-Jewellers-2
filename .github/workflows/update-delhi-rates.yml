@@ -1,0 +1,45 @@
+name: Update Delhi jewellery rates
+
+on:
+  schedule:
+    # 05:30 UTC = 11:00 AM IST
+    - cron: '30 5 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/update-delhi-rates.yml'
+      - 'scripts/update_rates.py'
+
+permissions:
+  contents: write
+
+jobs:
+  update-rates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Fetch Delhi rates and update website
+        run: python scripts/update_rates.py
+
+      - name: Commit updated rates
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "Rates unchanged; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Update Delhi jewellery rates"
+          git push
