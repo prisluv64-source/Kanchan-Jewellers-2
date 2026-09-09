@@ -29,20 +29,17 @@ jobs:
       - name: Install dependencies
         run: pip install requests beautifulsoup4
 
-      - name: Apply desktop navigation fix
-        run: python scripts/apply_nav_fix.py
-
       - name: Fetch Delhi rates and update website
         run: python scripts/update_rates.py
 
-      - name: Commit updated site files
+      - name: Commit updated rates
         run: |
-          if git diff --quiet -- index.html styles.css; then
-            echo "No site changes to commit."
+          if git diff --quiet -- index.html; then
+            echo "Rates unchanged; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html styles.css
-          git commit -m "Keep desktop navigation on one line from left edge"
+          git add index.html
+          git commit -m "Update Delhi jewellery rates"
           git push
