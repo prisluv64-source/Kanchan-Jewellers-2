@@ -1,0 +1,38 @@
+name: Restyle IBJA rate cards
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/restyle-ibja-cards.yml'
+      - 'scripts/restyle_ibja_cards.py'
+
+permissions:
+  contents: write
+
+jobs:
+  restyle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Restyle IBJA cards
+        run: python scripts/restyle_ibja_cards.py
+
+      - name: Commit styles
+        run: |
+          if git diff --quiet -- styles.css; then
+            echo "No style change needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add styles.css
+          git commit -m "Restyle IBJA rate cards"
+          git push
