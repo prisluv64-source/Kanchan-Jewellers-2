@@ -1,9 +1,11 @@
-name: Update Delhi jewellery rates
+name: Update IBJA jewellery rates
 
 on:
   schedule:
-    # 05:30 UTC = 11:00 AM IST
-    - cron: '30 5 * * *'
+    # IBJA publishes opening (AM) and closing (PM) benchmark rates.
+    # 06:30 UTC = 12:00 PM IST, 13:30 UTC = 7:00 PM IST
+    - cron: '30 6 * * 1-5'
+    - cron: '30 13 * * 1-5'
   workflow_dispatch:
   push:
     paths:
@@ -28,17 +30,17 @@ jobs:
       - name: Install dependencies
         run: pip install requests beautifulsoup4
 
-      - name: Fetch Delhi rates and update website
+      - name: Fetch IBJA rates and update website
         run: python scripts/update_rates.py
 
       - name: Commit updated rates
         run: |
           if git diff --quiet -- index.html; then
-            echo "Rates unchanged; nothing to commit."
+            echo "IBJA rates unchanged; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Update Delhi jewellery rates"
+          git commit -m "Update IBJA jewellery rates"
           git push
