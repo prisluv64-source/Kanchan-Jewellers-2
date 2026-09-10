@@ -10,6 +10,7 @@ on:
   push:
     paths:
       - 'scripts/update_rates.py'
+      - '.github/workflows/update-delhi-rates.yml'
 
 permissions:
   contents: write
@@ -43,4 +44,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           git commit -m "Update IBJA jewellery rates"
+          git pull --rebase origin main
           git push
