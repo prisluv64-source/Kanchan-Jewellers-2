@@ -1,0 +1,39 @@
+name: Upgrade premium footer
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/upgrade-footer.yml'
+      - 'scripts/upgrade_footer.py'
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade-footer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Upgrade footer
+        run: python scripts/upgrade_footer.py
+
+      - name: Commit footer changes
+        run: |
+          if git diff --quiet -- index.html styles.css; then
+            echo "No footer changes needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html styles.css
+          git commit -m "Upgrade premium footer"
+          git pull --rebase origin main
+          git push
