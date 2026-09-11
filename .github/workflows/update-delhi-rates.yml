@@ -2,9 +2,9 @@ name: Update IBJA jewellery rates
 
 on:
   schedule:
-    # Check hourly from 12:00 PM to 7:00 PM IST on weekdays.
-    # 06:30-13:30 UTC = 12:00-7:00 PM IST.
-    - cron: '30 6-13 * * 1-5'
+    # Mon-Fri: every 30 min from 12:17 PM to 7:47 PM IST
+    - cron: '47 6-13 * * 1-5'
+    - cron: '17 7-14 * * 1-5'
   workflow_dispatch:
   push:
     paths:
