@@ -1,0 +1,12 @@
+.git/
+.github/
+src/
+functions/
+scripts/
+wrangler.jsonc
+package.json
+package-lock.json
+README.md
+.assetsignore
+.dev.vars*
+.env*
