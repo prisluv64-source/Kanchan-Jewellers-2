@@ -2,10 +2,9 @@ name: Update IBJA jewellery rates
 
 on:
   schedule:
-    # IBJA publishes opening (AM) and closing (PM) benchmark rates.
-    # 06:30 UTC = 12:00 PM IST, 13:30 UTC = 7:00 PM IST
-    - cron: '30 6 * * 1-5'
-    - cron: '30 13 * * 1-5'
+    # Check hourly from 12:00 PM to 7:00 PM IST on weekdays.
+    # 06:30-13:30 UTC = 12:00-7:00 PM IST.
+    - cron: '30 6-13 * * 1-5'
   workflow_dispatch:
   push:
     paths:
