@@ -1,0 +1,39 @@
+name: Add enquiry navigation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-enquiry-nav.yml'
+      - 'scripts/add_enquiry_nav.py'
+
+permissions:
+  contents: write
+
+jobs:
+  add-enquiry-nav:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Add enquiry links
+        run: python scripts/add_enquiry_nav.py
+
+      - name: Commit navigation changes
+        run: |
+          if git diff --quiet -- index.html contact.html; then
+            echo "No navigation changes needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html contact.html
+          git commit -m "Add Enquiry link to navigation"
+          git pull --rebase origin main
+          git push
