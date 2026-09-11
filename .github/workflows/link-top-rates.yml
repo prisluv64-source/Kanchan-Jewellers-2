@@ -1,0 +1,39 @@
+name: Link top IBJA rates
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/link-top-rates.yml'
+      - 'scripts/link_top_rates.py'
+
+permissions:
+  contents: write
+
+jobs:
+  link-top-rates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Link top rates to full rate section
+        run: python scripts/link_top_rates.py
+
+      - name: Commit link update
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "No changes needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Link top IBJA rates to full rate section"
+          git pull --rebase origin main
+          git push
