@@ -798,56 +798,293 @@ a {
 
 }
 
-/* ========== FOOTER ========== */
-footer {
-  background: var(--primary-dark);
-  color: white;
-  padding: 40px 24px;
-  margin-top: 40px;
+/* ========== PREMIUM FOOTER ========== */
+.site-footer {
+  margin-top: 62px;
+  padding: 0;
+  background: #211f22;
+  color: #f7f1e8;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-inner {
+.footer-shell {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 24px 42px;
+}
+
+.footer-cta {
+  position: relative;
+  transform: translateY(-34px);
+  margin: 0 auto -4px;
+  max-width: 980px;
+  min-height: 82px;
+  padding: 18px 24px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.footer-brand strong {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
-}
-
-.footer-brand span {
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
-
-.footer-links {
-  display: flex;
+  justify-content: space-between;
   gap: 24px;
+  border: 1px solid rgba(232, 213, 163, 0.18);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #5c1a3a, #6d2850);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
 }
 
-.footer-links a {
-  opacity: 0.8;
+.footer-cta-copy strong {
+  display: block;
+  margin-bottom: 3px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  color: #fffaf2;
+}
+
+.footer-cta-copy span {
+  display: block;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.75rem;
+}
+
+.footer-whatsapp-cta {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 9px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 9px;
+  background: #25d366;
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 700;
   transition: var(--transition);
 }
 
-.footer-links a:hover {
-  opacity: 1;
-  color: var(--gold-light);
+.footer-whatsapp-cta svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
 }
 
-footer p {
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-  font-size: 0.85rem;
-  opacity: 0.6;
+.footer-whatsapp-cta:hover {
+  background: #1daf52;
+  transform: translateY(-1px);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr 0.9fr 1.3fr;
+  gap: 54px;
+  align-items: start;
+  padding-top: 16px;
+}
+
+.footer-column h3 {
+  margin: 0 0 14px;
+  color: #fffaf2;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.footer-logo-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 16px;
+}
+
+.footer-logo-row img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(232, 213, 163, 0.65);
+}
+
+.footer-logo-row strong,
+.footer-logo-row span {
+  display: block;
+  line-height: 1;
+}
+
+.footer-logo-row strong {
+  color: #f4d487;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.34rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.footer-logo-row span {
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+}
+
+.footer-about > p {
+  max-width: 290px;
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.76rem;
+  line-height: 1.7;
+}
+
+.footer-mini-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid rgba(193, 151, 63, 0.3);
+  border-radius: 999px;
+  background: rgba(92, 26, 58, 0.24);
+  color: #e8d5a3;
+  font-size: 0.66rem;
+  font-weight: 600;
+}
+
+.footer-nav {
+  display: grid;
+  gap: 9px;
+}
+
+.footer-nav a {
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  transition: var(--transition);
+}
+
+.footer-nav a:hover {
+  color: #f4d487;
+  transform: translateX(2px);
+}
+
+.footer-contact {
+  min-width: 0;
+}
+
+.footer-contact-item {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 8px;
+  align-items: start;
+  margin-bottom: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.footer-contact-icon {
+  color: #d7a7c0;
+  line-height: 1.4;
+}
+
+.footer-contact-item a {
+  color: rgba(255, 255, 255, 0.78);
+  transition: var(--transition);
+}
+
+.footer-contact-item a:hover {
+  color: #f4d487;
+}
+
+.footer-contact-item div > a {
+  display: inline-block;
+  margin-top: 2px;
+  color: #e8d5a3;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #181719;
+}
+
+.footer-bottom-inner {
+  max-width: 1280px;
+  min-height: 54px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.site-footer .footer-bottom p {
+  margin: 0;
+  width: auto;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.68rem;
+  opacity: 1;
+}
+
+.footer-trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.footer-trust-badges span {
+  padding: 4px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.62rem;
+  line-height: 1;
+}
+
+@media (max-width: 980px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 42px;
+  }
+}
+
+@media (max-width: 680px) {
+  .site-footer {
+    margin-top: 52px;
+  }
+
+  .footer-shell {
+    padding: 0 16px 34px;
+  }
+
+  .footer-cta {
+    transform: translateY(-26px);
+    margin-bottom: 0;
+    padding: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .footer-whatsapp-cta {
+    width: 100%;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-bottom-inner {
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-trust-badges {
+    justify-content: flex-start;
+  }
 }
 
 /* ========== FLOATING WHATSAPP ========== */
