@@ -1,0 +1,39 @@
+name: Add contact FAQ
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-contact-faq.yml'
+      - 'scripts/add_contact_faq.py'
+
+permissions:
+  contents: write
+
+jobs:
+  add-contact-faq:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Add FAQ section and styles
+        run: python scripts/add_contact_faq.py
+
+      - name: Commit FAQ changes
+        run: |
+          if git diff --quiet -- contact.html contact-page.css; then
+            echo "No FAQ changes needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add contact.html contact-page.css
+          git commit -m "Add FAQ section to Visit Us page"
+          git pull --rebase origin main
+          git push
