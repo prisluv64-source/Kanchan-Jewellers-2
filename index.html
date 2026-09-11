@@ -326,6 +326,27 @@
         grid-template-columns: 1fr;
       }
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .top-rate-link {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .top-rate-link:hover,
+    .top-rate-link:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    #ibjaRates {
+      scroll-margin-top: 110px;
+    }
+
   </style>
 </head>
 <body id="top">
@@ -338,7 +359,7 @@
       </div>
       <div class="rates">
         <span class="rate-dot"></span>
-        IBJA Rate: <strong>Gold 22K ₹14,016/g</strong> &nbsp;•&nbsp; <strong>Silver ₹230/g</strong>
+        <a class="top-rate-link" href="#ibjaRates" aria-label="View full IBJA gold and silver rates">IBJA Rate: <strong>Gold 22K ₹14,016/g</strong> &nbsp;•&nbsp; <strong>Silver ₹230/g</strong></a>
       </div>
       <div class="top-right">
         <span>EN</span>
