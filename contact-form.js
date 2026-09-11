@@ -2,92 +2,63 @@
   const form = document.getElementById('enquiryForm');
   if (!form) return;
 
-  const submitBtn = form.querySelector('.enquiry-submit-btn');
+  const WHATSAPP_NUMBER = '919839638670';
   const errorEl = form.querySelector('.enquiry-form-error');
-  const modal = document.getElementById('enquirySuccessModal');
-  const closeBtn = document.getElementById('enquirySuccessClose');
-  const defaultBtnText = submitBtn ? submitBtn.textContent : 'Submit Enquiry';
 
   const showError = (message) => {
     if (errorEl) errorEl.textContent = message || '';
   };
 
-  const openSuccess = () => {
-    if (!modal) return;
-    modal.hidden = false;
-    document.body.style.overflow = 'hidden';
-    closeBtn?.focus();
+  const formatVisit = (value) => {
+    if (!value) return 'Not specified';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value;
+    return date.toLocaleString('en-IN', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit'
+    });
   };
 
-  const closeSuccess = () => {
-    if (!modal) return;
-    modal.hidden = true;
-    document.body.style.overflow = '';
-  };
-
-  closeBtn?.addEventListener('click', closeSuccess);
-
-  modal?.addEventListener('click', (event) => {
-    if (event.target === modal) closeSuccess();
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && modal && !modal.hidden) closeSuccess();
-  });
-
-  form.addEventListener('submit', async (event) => {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
     showError('');
 
     if (!form.reportValidity()) return;
 
     const data = new FormData(form);
-    const payload = {
-      name: String(data.get('name') || '').trim(),
-      phone: String(data.get('phone') || '').trim(),
-      interest: String(data.get('interest') || '').trim(),
-      occasion: String(data.get('occasion') || '').trim(),
-      preferredVisit: String(data.get('preferredVisit') || '').trim(),
-      message: String(data.get('message') || '').trim(),
-      website: String(data.get('website') || '').trim()
-    };
+    const name = String(data.get('name') || '').trim();
+    const phone = String(data.get('phone') || '').trim();
+    const interest = String(data.get('interest') || '').trim();
+    const occasion = String(data.get('occasion') || '').trim() || 'Not specified';
+    const preferredVisit = formatVisit(String(data.get('preferredVisit') || '').trim());
+    const customerMessage = String(data.get('message') || '').trim() || 'No additional message';
 
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting…';
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (name.length < 2 || phoneDigits.length < 10 || phoneDigits.length > 15 || !interest) {
+      showError('Please check your name, mobile number and jewellery interest.');
+      return;
     }
 
-    try {
-      const response = await fetch('/api/enquiry', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
+    const message = [
+      '*New Website Enquiry - Kanchan Jewellers*',
+      '',
+      `Name: ${name}`,
+      `Mobile: ${phone}`,
+      `Interested In: ${interest}`,
+      `Occasion: ${occasion}`,
+      `Preferred Visit: ${preferredVisit}`,
+      '',
+      `Message: ${customerMessage}`
+    ].join('\n');
 
-      let result = null;
-      try {
-        result = await response.json();
-      } catch (_) {
-        result = null;
-      }
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const popup = window.open(whatsappUrl, '_blank', 'noopener');
 
-      if (!response.ok || !result?.ok) {
-        throw new Error(result?.message || 'Unable to submit enquiry');
-      }
-
-      form.reset();
-      openSuccess();
-    } catch (error) {
-      console.error('Enquiry submission failed:', error);
-      showError('We could not submit your enquiry right now. Please try again in a moment or call us at +91 98396 38670.');
-    } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = defaultBtnText;
-      }
+    if (!popup) {
+      window.location.href = whatsappUrl;
     }
   });
 })();
